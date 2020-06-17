@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<script type="text/javascript">
+	var largest1BorderedSquare = function(grid) {
+            if(grid.length == 0 || grid[0].length == 0){
+                return 0;
+            }
+            let maxLen = 0;
+            let m = grid.length;
+            let n = grid[0].length;
+            for(let i=0;i<grid.length;i++){
+                for(let j=0;j<grid[i].length;j++){
+                    if(grid[i][j] == 1){
+                        
+                        let currLen = maxLen;
+                        let flag1 = true;
+                        while(i+currLen<m && j+currLen<n){
+                            let flag2 = true;
+                            for(let a=i;a<i+currLen+1;a++){
+                                if(grid[a][j] == 0){
+                                    flag1 = false
+                                    break;
+                                }
+                            }
+                            if(!flag1){
+                                break
+                            }
+                            for(let b=j;b<j+currLen+1;b++){
+                                if(grid[i][b] == 0){
+                                    flag1 = false
+                                    break;
+                                }
+                            }
+                            if(!flag1){
+                                break
+                            }
+                           
+                            for(let a=i;a<i+currLen+1;a++){
+                                if(grid[a][j+currLen] == 0){
+                                    currLen += 1
+                                    flag2 = false
+                                    break;
+                                }
+                            }
+                            if(!flag2){
+                                continue
+                            }
+                            for(let b=j;b<j+currLen+1;b++){
+                                if(grid[i+currLen][b] == 0){
+                                    currLen += 1
+                                    flag2 = false
+                                    break;
+                                }
+                            }
+                            if(!flag2){
+                                continue
+                            }
+                            currLen += 1
+                            maxLen = currLen
+                        }
+                       
+                    }
+                }
+            }
+            return maxLen*maxLen;
+        };
+        grid = [[1,1,1],[1,0,1],[1,1,1],[1,1,1]]
+        var aaa = largest1BorderedSquare(grid)
+        console.log(aaa)
+</script>
+</body>
+</html>
