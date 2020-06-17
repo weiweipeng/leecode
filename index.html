@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<script type="text/javascript">
+	var lengthOfLongestSubstring = function(s) {
+   let max = 1;
+   let arr = [];
+   for(let i = 0;i<s.length;i++){
+       if(arr.length > 0){
+           for(let j=arr.length;j>=0;j--){
+                if(s[i] == arr[j]){
+                    arr = arr.slice(j+1);
+                    arr.push(s[i])
+                    break;
+                }
+                if(j == 0){
+                    arr.push(s[i])
+                    if(max<arr.length){
+                        max = arr.length;
+                    }
+                }
+            }
+            
+          
+                    
+                
+       }else{
+           arr.push(s[i])
+            if(max<arr.length){
+                max = arr.length;
+            }
+       }
+       
+       console.log(arr)
+   }
+    return max;
+};
+	let s = lengthOfLongestSubstring("abcabcbb");
+	console.log(s)
+</script>
+</body>
+</html>

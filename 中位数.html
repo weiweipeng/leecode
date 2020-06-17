@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<script type="text/javascript">
+	let num1 = [1,3]
+	let num2 = [2]
+	function findMedianSortedArrays(){
+		let nums = num1.concat(num2);
+		nums.sort(function(a,b){
+			return a-b;
+		})
+		let middle = nums.length/2;
+		let middleNum = middle%1 == 0 ? parseFloat((nums[middle-1]+nums[middle])/2) : nums[parseInt(middle)];
+		return middleNum;
+	}
+	let nums = findMedianSortedArrays();
+	console.log(nums)
+</script>
+</body>
+</html>

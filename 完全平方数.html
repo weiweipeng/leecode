@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<script type="text/javascript">
+	var numSquares = function(n) {
+	 let arr = [];let all = 0;let nums = [],lens = 0;
+	 for(let i=1;i<=n;i++){
+	     if(i*i<=n){
+	         arr.push(i*i)
+	     }else{
+	         break;
+	     }
+	  }
+	for(let j=arr.length-1;j>=0;j--){
+	  	let arrs = [];
+	  	let m = n;
+	    for(let k = j;k>=0; k-- ){
+	      	if(arr[k]<=m){
+	      		m-=arr[k];
+	      		arrs.push(arr[k]);
+	      		if(arr[k]<=m){
+	      			k++;
+	      		}
+	      	}
+	      	if(m==0){
+	      		break;
+	      	}
+	    }
+	  	nums.push(arrs)
+	}
+
+	for(let s = 0;s<nums.length;s++){
+		nums[s] = Array.from(new Set(nums[s]));
+		lens = lens>nums[s].length || lens==0 ? nums[s].length : lens;
+	}
+	return lens;
+};
+
+console.log(numSquares(43))
+</script>
+</body>
+</html>
